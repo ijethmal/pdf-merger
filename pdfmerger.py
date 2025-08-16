@@ -39,7 +39,11 @@ class PDFMergerApp(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("PDF Merger")
-        self.setWindowIcon(QIcon(resource_path("icon.ico")))
+        if sys.platform.startswith("win"):
+            icon_file = "icon.ico"
+        else:
+            icon_file = "icon.png"
+        self.setWindowIcon(QIcon(resource_path(icon_file)))
         self.setGeometry(100, 100, 600, 400)
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
